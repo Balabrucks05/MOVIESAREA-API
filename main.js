@@ -5,6 +5,10 @@ import connectDb from "./lib/db.js";
 const app = express();
 const port = 6090;
 
+//Data understanding Middlewares
+app.use(express.json())
+app.use(express.urlencoded({extended: true}));
+
 //connect DB
 connectDb();
 
@@ -21,5 +25,5 @@ app.use("/movies", movieRoutes);
 app.listen(port,()=>{
     console.log(`This server is running at http://localhost:${port}`);
     
-})
+});
  
