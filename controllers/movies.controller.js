@@ -11,6 +11,9 @@ export const MovieCreate = async(req,res) => {
      const newMovie = new Movie({
         title: req.body.title,
         desc: req.body.desc,
+        song: req.body.song,
+        director : req.body.director,
+        ticket: req.body.ticket
      });
      //Successful or eror?
     try {
