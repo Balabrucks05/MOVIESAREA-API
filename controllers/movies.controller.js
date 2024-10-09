@@ -1,15 +1,27 @@
+import Movie from "../models/movie.model.js";
 export const MovieIndex = (req,res) => {
     res.send("Get all the movie lists")
 };
 
-export const MovieCreate = (req,res) => {
+export const MovieCreate = async(req,res) => {
     // id , title , description
-    console.log(req.body);
+    // console.log(req.body);
 
-    return res.json(req.body);
-    
-
-    //create the movie info
+    //validate your date.
+     const newMovie = new Movie({
+        title: req.body.title,
+        desc: req.body.desc,
+     });
+     //Successful or eror?
+    try {
+        const movie = await newMovie.save();
+        return res.status(201).json(movie)
+    } catch (error) {
+        return res.status(404).json({message:error.message})
+        
+    }
+    // return res.json(req.body);
+    //create the movie info.
 }
 
 export const MovieUpdate = (req,res) => {
