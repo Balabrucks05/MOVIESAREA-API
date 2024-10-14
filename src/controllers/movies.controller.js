@@ -6,9 +6,9 @@ export const MovieIndex = (req,res) => {
 export const MovieCreate = async(req,res) => {
     // id , title , description
     // console.log(req.body);
-
+    try {
     //validate your date.
-     const newMovie = new Movie({
+     const newMovie = await Movie.create({
         title: req.body.title,
         desc: req.body.desc,
         song: req.body.song,
@@ -16,9 +16,9 @@ export const MovieCreate = async(req,res) => {
         ticket: req.body.ticket
      });
      //Successful or eror?
-    try {
-        const movie = await newMovie.save();
-        return res.status(201).json(movie)
+    
+        // const movie = await newMovie.save();
+        return res.status(201).json({message: "created successfully...!",newMovie})
     } catch (error) {
         return res.status(404).json({message:error.message})
         

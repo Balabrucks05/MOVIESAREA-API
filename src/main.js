@@ -1,6 +1,6 @@
 import express from "express";
 import movieRoutes from "./routes/movies.routes.js"
-import connectDb from "./lib/db.js";
+import connectDb from "./config/db.js";
 
 const app = express();
 const port = 6090;
